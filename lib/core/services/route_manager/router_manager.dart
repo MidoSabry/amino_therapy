@@ -1,10 +1,11 @@
 import 'package:amino_therapy/core/services/flavorizer/flavors_managment.dart';
 import 'package:amino_therapy/core/services/log/app_log.dart';
-import 'package:amino_therapy/features/home/home_screen.dart';
+import 'package:amino_therapy/features/home/presentation/screen/home_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../features/Splash/presentation/ui/splash_screen.dart';
+import '../../../features/booking/presentation/screen/booking_screen.dart';
 import '../../../features/parent/ui/page/parent_screen.dart';
 import '../../component/inspector/inspector_screen.dart';
 import '../../data/constants/app_router.dart';
@@ -52,11 +53,11 @@ class RouterManager {
         path: AppRouter.splash,
         builder: (context, state) => const SplashScreen(),
       ),
-       GoRoute(
-        name: AppRouter.home,
-        path: AppRouter.home,
-        builder: (context, state) => const HomeScreen(),
-      ),
+      //  GoRoute(
+      //   name: AppRouter.home,
+      //   path: AppRouter.home,
+      //   builder: (context, state) => const HomeScreen(),
+      // ),
       // GoRoute(
       //   name: AppRouter.onBoarding,
       //   path: AppRouter.onBoarding,
@@ -417,66 +418,66 @@ class RouterManager {
       //     submitExcuseRequestModel: state.extra as SubmitExcuseRequestModel,
       //   ),
       // ),
-      // StatefulShellRoute.indexedStack(
-      //   builder: (context, state, navigationShell) {
-      //     globalNavigationShell = navigationShell;
-      //     return ParentScreen(navigationShell: navigationShell);
-      //   },
-      //   branches: [
-      //     StatefulShellBranch(
-      //       routes: [
-      //         GoRoute(
-      //           name: AppRouter.home,
-      //           path: AppRouter.home,
-      //           builder: (context, state) => HomeScreen(
-      //             key: ValueKey(
-      //               '${AppRouter.home}_${context.locale.languageCode}',
-      //             ),
-      //           ),
-      //         ),
-      //       ],
-      //     ),
-      //     StatefulShellBranch(
-      //       routes: [
-      //         // GoRoute(
-      //         //   name: AppRouter.requests,
-      //         //   path: AppRouter.requests,
-      //         //   builder: (context, state) => RequestsMobileBody(
-      //         //     key: ValueKey(
-      //         //       '${AppRouter.requests}_${context.locale.languageCode}',
-      //         //     ),
-      //         //   ),
-      //         // ),
-      //       ],
-      //     ),
-      //         StatefulShellBranch(
-      //           routes: [
-      //             // GoRoute(
-      //             //   name: AppRouter.profile,
-      //             //   path: AppRouter.profile,
-      //             //   builder: (context, state) => ProfileMobileBody(
-      //             //     key: ValueKey(
-      //             //       '${AppRouter.profile}_${context.locale.languageCode}',
-      //             //     ),
-      //             //   ),
-      //             // ),
-      //           ],
-      //         ),
-      //         StatefulShellBranch(
-      //           routes: [
-      //             // GoRoute(
-      //             //   name: AppRouter.menu,
-      //             //   path: AppRouter.menu,
-      //             //   builder: (context, state) => MenuMobileBody(
-      //             //     key: ValueKey(
-      //             //       '${AppRouter.menu}_${context.locale.languageCode}',
-      //             //     ),
-      //             //   ),
-      //             // ),
-      //           ],
-      //         ),
-      //   ],
-      // ),
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) {
+          globalNavigationShell = navigationShell;
+          return ParentScreen(navigationShell: navigationShell);
+        },
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                name: AppRouter.home,
+                path: AppRouter.home,
+                builder: (context, state) => HomeScreen(
+                  key: ValueKey(
+                    '${AppRouter.home}_${context.locale.languageCode}',
+                  ),
+                ),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                name: AppRouter.booking,
+                path: AppRouter.booking,
+                builder: (context, state) => BookingScreen(
+                  key: ValueKey(
+                    '${AppRouter.requests}_${context.locale.languageCode}',
+                  ),
+                ),
+              ),
+            ],
+          ),
+          //     StatefulShellBranch(
+          //       routes: [
+          //         // GoRoute(
+          //         //   name: AppRouter.profile,
+          //         //   path: AppRouter.profile,
+          //         //   builder: (context, state) => ProfileMobileBody(
+          //         //     key: ValueKey(
+          //         //       '${AppRouter.profile}_${context.locale.languageCode}',
+          //         //     ),
+          //         //   ),
+          //         // ),
+          //       ],
+          //     ),
+          //     StatefulShellBranch(
+          //       routes: [
+          //         // GoRoute(
+          //         //   name: AppRouter.menu,
+          //         //   path: AppRouter.menu,
+          //         //   builder: (context, state) => MenuMobileBody(
+          //         //     key: ValueKey(
+          //         //       '${AppRouter.menu}_${context.locale.languageCode}',
+          //         //     ),
+          //         //   ),
+          //         // ),
+          //       ],
+          //     ),
+        ],
+      ),
     ],
   );
 

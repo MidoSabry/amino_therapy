@@ -11,6 +11,7 @@ class AppSvgIcons {
   static const String file = '${_svgIconPath}file.svg';
   static const String user = '${_svgIconPath}user.svg';
   static const String menu = '${_svgIconPath}menu.svg';
+  static const String cart = '${_svgIconPath}cart.svg';
   static const String noifications = '${_svgIconPath}notification.svg';
   static const String arrowShortLeft = '${_svgIconPath}arrow_short_left.svg';
   static const String arrowShortRight = '${_svgIconPath}arrow_short_right.svg';

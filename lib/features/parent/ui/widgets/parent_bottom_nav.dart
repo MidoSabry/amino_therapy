@@ -26,72 +26,34 @@ class CustomBottomNavigation extends StatelessWidget {
 
       items: [
         BottomNavigationBarItem(
-          icon: const PImage(
-            source: AppSvgIcons.home,
-            height: 24,
-            width: 24,
-            fit: BoxFit.contain,
-            color: AppColors.greyColor,
-          ),
-          activeIcon: const PImage(
-            source: AppSvgIcons.home,
-            height: 24,
-            width: 24,
-            fit: BoxFit.contain,
-            color: AppColors.primaryColor,
-          ),
+          icon: Icon(Icons.home_outlined, color: AppColors.greyColor),
+          activeIcon: Icon(Icons.home_outlined, color: AppColors.primaryColor),
           label: 'home'.tr(),
         ),
         BottomNavigationBarItem(
-          icon: const PImage(
-            source: AppSvgIcons.file,
-            height: 24,
-            width: 24,
-            fit: BoxFit.contain,
-            color: AppColors.greyColor,
-          ),
-          activeIcon: const PImage(
-            source: AppSvgIcons.file,
-            height: 24,
-            width: 24,
-            fit: BoxFit.contain,
+          icon: Icon(Icons.file_open_outlined, color: AppColors.greyColor),
+          activeIcon: Icon(
+            Icons.file_open_outlined,
             color: AppColors.primaryColor,
           ),
-          label: 'requests'.tr(),
+          label: 'reserves'.tr(),
+        ),
+
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_cart_outlined, color: AppColors.greyColor),
+          activeIcon: Icon(
+            Icons.shopping_cart_outlined,
+            color: AppColors.primaryColor,
+          ),
+          label: 'cart'.tr(),
         ),
         BottomNavigationBarItem(
-          icon: const PImage(
-            source: AppSvgIcons.user,
-            height: 24,
-            width: 24,
-            fit: BoxFit.contain,
-            color: AppColors.greyColor,
-          ),
-          activeIcon: const PImage(
-            source: AppSvgIcons.user,
-            height: 24,
-            width: 24,
-            fit: BoxFit.contain,
+          icon: Icon(Icons.person_outline_outlined, color: AppColors.greyColor),
+          activeIcon: Icon(
+            Icons.person_outline_outlined,
             color: AppColors.primaryColor,
           ),
           label: 'profile'.tr(),
-        ),
-        BottomNavigationBarItem(
-          icon: const PImage(
-            source: AppSvgIcons.menu,
-            height: 24,
-            width: 24,
-            fit: BoxFit.contain,
-            color: AppColors.greyColor,
-          ),
-          activeIcon: const PImage(
-            source: AppSvgIcons.menu,
-            height: 24,
-            width: 24,
-            fit: BoxFit.contain,
-            color: AppColors.primaryColor,
-          ),
-          label: 'menu'.tr(),
         ),
       ],
     );

@@ -6,7 +6,7 @@ import 'core/services/localization/app_localization.dart';
 import 'di.dart';
 import 'myapp.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await AppDependencies().initialize();
@@ -17,7 +17,7 @@ void main() async{
 
   // // Handle firebase background notifications
   // FirebaseMessaging.onBackgroundMessage(backgroundMessageHandler);
-   runApp(
+  runApp(
     EasyLocalization(
       supportedLocales: AppLocalization.getSupportedLocales,
       fallbackLocale: AppLocalization.fallbackLocale,
@@ -31,8 +31,6 @@ void main() async{
       ),
     ),
   );
-
-
 
   WidgetsBinding.instance.addPostFrameCallback((_) {
     // This enable showing status bar and the bottom bar of the device itself

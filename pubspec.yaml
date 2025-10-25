@@ -97,13 +97,13 @@ flutter:
     - api_end_points.env
 
   fonts:
-    - family: SST-Arabic
+    - family: IBM_Plex_Sans
       fonts:
-        - asset: assets/fonts/SST-Arabic-Light.ttf
+        - asset: assets/fonts/IBMPlexSans_Condensed-Light.ttf
           weight: 300
-        - asset: assets/fonts/SST-Arabic-Roman.ttf
+        - asset: assets/fonts/IBMPlexSans-Regular.ttf
           weight: 400
-        - asset: assets/fonts/SST-Arabic-Medium.ttf
+        - asset: assets/fonts/IBMPlexSans_Condensed-Regular.ttf
           weight: 500
-        - asset: assets/fonts/SST-Arabic-Bold.ttf
+        - asset: assets/fonts/IBMPlexSans_Condensed-Bold.ttf
           weight: 700

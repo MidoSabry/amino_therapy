@@ -15,4 +15,11 @@ class AppIcons {
   static const String groupLogo = '${iconPath}Group.png';
   static const String saLang = '${iconPath}sa.png';
   static const String ukLang = '${iconPath}uk.png';
+
+  static const String pannerImage = '${iconPath}panner_home.png';
+
+  //products
+  static const String img1 = '${iconPath}1.png';
+  static const String img2 = '${iconPath}2.png';
+  static const String img3 = '${iconPath}3.png';
 }

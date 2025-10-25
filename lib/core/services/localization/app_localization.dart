@@ -10,7 +10,7 @@ class AppLocalization {
     Locale('ar', 'SA'),
   ];
   static const Locale _fallbackLocale = Locale('en', "US");
-  static const Locale _startLocale = Locale("ar", "SA");
+  static const Locale _startLocale = Locale("en", "US");
 
   static List<Locale> get getSupportedLocales {
     return [..._spportedLocales];

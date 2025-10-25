@@ -82,14 +82,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: finalActions,
       title: PText(
         title: title.tr(context: context),
-        fontColor: AppColors.whiteColor,
+        fontColor: AppColors.black,
         fontWeight: FontWeight.w500,
         size: PSize.text18,
       ),
       centerTitle: isCenterTitle,
       titleSpacing: isCenterTitle ? null : 0,
       elevation: 0,
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: AppColors.backgroundScreens,
       surfaceTintColor: Colors.transparent,
       foregroundColor: Colors.black,
     );

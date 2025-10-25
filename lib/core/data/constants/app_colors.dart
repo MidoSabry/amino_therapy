@@ -13,8 +13,11 @@ import 'package:flutter/material.dart';
 // Shade 4 : 86B6DD
 class AppColors {
   static const Color darkPrimaryColor = Color(0xFF1091C3);
-  static const Color primaryColor = Color(0xFFE99A00);
-  static const Color secondaryColor = Color(0xFF15C5CE);
+  static const Color primaryColor = Color(0xFFE95754);
+  static const Color secondaryColor = Color(0xFFFCD9D3);
+  static const Color grayBeautyColor = Color(0xFF6E5F5C);
+  static const Color yeallowColor = Color(0xFFFACF9E);
+  static const Color backgroundScreens = Color(0xFFfaf5f1);
 
   static const Color successBackgroundColor = Color(0xFFECFDF3);
   static const Color successTextColor = Color(0xFF067647);
