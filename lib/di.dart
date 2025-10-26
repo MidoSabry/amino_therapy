@@ -77,6 +77,7 @@ class AppDependencies {
     // await runSecurityChecks();
 
     //bloc
+    
 
     // Use cases
     // getIt.registerLazySingleton<LoginUseCase>(

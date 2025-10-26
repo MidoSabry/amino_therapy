@@ -47,6 +47,7 @@ class PTextField extends StatefulWidget {
   final bool isOptional;
   final String? sourcePrefixImage;
   final Widget? suffixIcon;
+  final bool isCenter;
   const PTextField({
     super.key,
     this.labelAbove,
@@ -90,6 +91,7 @@ class PTextField extends StatefulWidget {
     this.isOptional = false,
     this.sourcePrefixImage,
     this.suffixIcon,
+    this.isCenter = false,
   });
 
   @override
@@ -122,31 +124,33 @@ class _PTextFieldState extends State<PTextField> {
       children: [
         widget.labelAbove != null
             ? Row(
-              children: [
-                PText(
-                  title: widget.labelAbove!.tr(),
-                  size: widget.labelAboveFontSize ?? PSize.text16,
-                  fontColor: widget.labelAboveColor,
-                  fontWeight: widget.labelAboveFontWeight ?? FontWeight.w400,
-                ),
-                widget.isFieldRequired
-                    ? PText(
-                      title: ' *',
-                      size: widget.labelAboveFontSize ?? PSize.text16,
-                      fontColor: AppColors.errorCode,
-                      fontWeight:
-                          widget.labelAboveFontWeight ?? FontWeight.w400,
-                    )
-                    : const SizedBox.shrink(),
-                const SizedBox(width: 8),
-                widget.isOptional
-                    ? Text(
-                      "(optional)".tr(),
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(),
-                    )
-                    : Container(),
-              ],
-            )
+                children: [
+                  PText(
+                    title: widget.labelAbove!.tr(),
+                    size: widget.labelAboveFontSize ?? PSize.text16,
+                    fontColor: widget.labelAboveColor,
+                    fontWeight: widget.labelAboveFontWeight ?? FontWeight.w400,
+                  ),
+                  widget.isFieldRequired
+                      ? PText(
+                          title: ' *',
+                          size: widget.labelAboveFontSize ?? PSize.text16,
+                          fontColor: AppColors.errorCode,
+                          fontWeight:
+                              widget.labelAboveFontWeight ?? FontWeight.w400,
+                        )
+                      : const SizedBox.shrink(),
+                  const SizedBox(width: 8),
+                  widget.isOptional
+                      ? Text(
+                          "(optional)".tr(),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelSmall?.copyWith(),
+                        )
+                      : Container(),
+                ],
+              )
             : const SizedBox.shrink(),
         widget.labelAbove != null
             ? const SizedBox(height: 16)
@@ -154,8 +158,9 @@ class _PTextFieldState extends State<PTextField> {
         Form(
           key: widget.formKey,
           child: TextFormField(
-            textAlign:
-                AppLocalization.isArabic ? TextAlign.right : TextAlign.left,
+            textAlign: widget.isCenter
+                ? TextAlign.center
+                : (AppLocalization.isArabic ? TextAlign.right : TextAlign.left),
 
             enabled: widget.enabled,
             focusNode: widget.currentFocus,
@@ -182,10 +187,10 @@ class _PTextFieldState extends State<PTextField> {
             validator: widget.validator,
             textDirection:
                 (widget.isHasSpecialCharcters && AppLocalization.isArabic)
-                    ? TextDirection.ltr
-                    : AppLocalization.isArabic
-                    ? TextDirection.rtl
-                    : TextDirection.ltr,
+                ? TextDirection.ltr
+                : AppLocalization.isArabic
+                ? TextDirection.rtl
+                : TextDirection.ltr,
             decoration: InputDecoration(
               errorStyle: const TextStyle(color: AppColors.errorBorderColor),
               isDense: widget.isDense ?? false,
@@ -200,21 +205,19 @@ class _PTextFieldState extends State<PTextField> {
               //   maxHeight: 24,
               //   maxWidth: 24,
               // ),
-              suffixIcon:
-                  widget.isPassword
-                      ? IconButton(
-                        icon:
-                            isObscured
-                                ? const Icon(Icons.remove_red_eye_outlined)
-                                : const Icon(Icons.remove_red_eye),
-                        color: AppColors.primaryColor,
-                        onPressed: () {
-                          setState(() {
-                            isObscured = !isObscured;
-                          });
-                        },
-                      )
-                      : widget.suffixIcon,
+              suffixIcon: widget.isPassword
+                  ? IconButton(
+                      icon: isObscured
+                          ? const Icon(Icons.remove_red_eye_outlined)
+                          : const Icon(Icons.remove_red_eye),
+                      color: AppColors.primaryColor,
+                      onPressed: () {
+                        setState(() {
+                          isObscured = !isObscured;
+                        });
+                      },
+                    )
+                  : widget.suffixIcon,
               // prefixIcon: (widget.isHasSpecialCharcters &&
               //          AppLocalization.isArabic &&
               //         widget.isPassword)
@@ -230,20 +233,19 @@ class _PTextFieldState extends State<PTextField> {
               //     : widget.prefixIcon,
 
               // prefixIcon: widget.prefixIcon,
-              prefixIcon:
-                  widget.sourcePrefixImage == null
-                      ? null
-                      : Padding(
-                        padding: const EdgeInsets.all(
-                          12.0,
-                        ), // Adjust padding as needed
-                        child: PImage(
-                          source: widget.sourcePrefixImage!,
-                          width: 24,
-                          height: 24,
-                          fit: BoxFit.contain,
-                        ),
+              prefixIcon: widget.sourcePrefixImage == null
+                  ? null
+                  : Padding(
+                      padding: const EdgeInsets.all(
+                        12.0,
+                      ), // Adjust padding as needed
+                      child: PImage(
+                        source: widget.sourcePrefixImage!,
+                        width: 24,
+                        height: 24,
+                        fit: BoxFit.contain,
                       ),
+                    ),
               filled: true,
               fillColor: widget.fillColor,
               hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(

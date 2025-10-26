@@ -6,6 +6,7 @@ class AppRouter {
   static const String otp = '/otp';
   static const String home = '/home';
   static const String booking = '/booking';
+  static const String cart = '/cart';
   static const String requests = '/requests';
   static const String profile = '/profile';
   static const String menu = '/meun';

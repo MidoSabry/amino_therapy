@@ -64,47 +64,46 @@ class ButtonWidget extends StatelessWidget {
           borderRadius:
               borderRadiusGeometry ?? BorderRadius.circular(borderRadius ?? 4),
           side: BorderSide(
-            color:
-                borderColor != null
-                    ? borderColor!
-                    : fillColor != null
-                    ? fillColor!
-                    : AppColors.primaryColor,
+            color: borderColor != null
+                ? borderColor!
+                : fillColor != null
+                ? fillColor!
+                : AppColors.primaryColor,
           ),
         ),
         elevation: elevation,
         padding: padding,
-        minimumSize:
-            isFitWidth ? const Size.fromHeight(48) : const Size(60, 48),
+        minimumSize: isFitWidth
+            ? const Size.fromHeight(48)
+            : const Size(60, 48),
       ),
-      child:
-          isLeftIcon
-              ? Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  if (title != null)
-                    Flexible(
-                      fit: FlexFit.loose,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: PText(
-                          title: title!.tr(),
-                          size: size ?? PSize.text18,
-                          fontColor: textColor ?? AppColors.whiteColor,
-                          fontWeight: fontWeight ?? FontWeight.w500,
-                        ),
+      child: isLeftIcon
+          ? Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                if (title != null)
+                  Flexible(
+                    fit: FlexFit.loose,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: PText(
+                        title: title!.tr(),
+                        size: size ?? PSize.text18,
+                        fontColor: textColor ?? AppColors.whiteColor,
+                        fontWeight: fontWeight ?? FontWeight.w500,
                       ),
                     ),
-                  icon ?? const SizedBox.shrink(),
-                ],
-              )
-              : Row(
-                mainAxisSize: mainAxisSize ?? MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  title != null
-                      ? Flexible(
+                  ),
+                icon ?? const SizedBox.shrink(),
+              ],
+            )
+          : Row(
+              mainAxisSize: mainAxisSize ?? MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                title != null
+                    ? Flexible(
                         fit: FlexFit.loose,
                         child: Padding(
                           padding: const EdgeInsets.only(
@@ -122,13 +121,13 @@ class ButtonWidget extends StatelessWidget {
                           ),
                         ),
                       )
-                      : const SizedBox.shrink(),
-                  (icon != null && title != null)
-                      ? const SizedBox(width: 8)
-                      : const SizedBox.shrink(),
-                  icon ?? const SizedBox.shrink(),
-                ],
-              ),
+                    : const SizedBox.shrink(),
+                (icon != null && title != null)
+                    ? const SizedBox(width: 8)
+                    : const SizedBox.shrink(),
+                icon ?? const SizedBox.shrink(),
+              ],
+            ),
     );
   }
 }
@@ -143,6 +142,7 @@ class PRoundedButton extends StatelessWidget {
   final Color? fillColor;
   final double? borderRadius;
   final FontWeight? fontWeight;
+  final bool isOutlined;
 
   const PRoundedButton({
     super.key,
@@ -155,6 +155,7 @@ class PRoundedButton extends StatelessWidget {
     this.fillColor,
     this.borderRadius,
     this.fontWeight,
+    this.isOutlined = false,
   });
 
   @override
@@ -170,7 +171,9 @@ class PRoundedButton extends StatelessWidget {
           ),
         ),
         overlayColor: WidgetStateProperty.all(AppColors.backgroundColor),
-        backgroundColor: WidgetStateProperty.all<Color>(backgroundColor),
+        backgroundColor: WidgetStateProperty.all<Color>(
+          isOutlined ? Colors.transparent : (fillColor ?? backgroundColor),
+        ),
         padding: WidgetStateProperty.all<EdgeInsets>(
           const EdgeInsets.only(left: 14, right: 14),
         ),
@@ -293,13 +296,12 @@ class PButton<C extends Cubit<S>, S> extends StatelessWidget {
       },
 
       /// Only rebuild when button visual state changes
-      buildWhen:
-          (previous, current) =>
-              current is ButtonLoadingState ||
-              current is ButtonDisabledState ||
-              current is ErrorState ||
-              current is ButtonEnabledState ||
-              current is LoadedState,
+      buildWhen: (previous, current) =>
+          current is ButtonLoadingState ||
+          current is ButtonDisabledState ||
+          current is ErrorState ||
+          current is ButtonEnabledState ||
+          current is LoadedState,
       builder: (context, state) {
         /// Show a loader instead of the button (if required)
         if (state is ButtonLoadingState &&
@@ -309,29 +311,26 @@ class PButton<C extends Cubit<S>, S> extends StatelessWidget {
               Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color:
-                      (!isFirstButton)
-                          ? isDark
-                              ? AppColors.darkInactiveButtonColor
-                              : AppColors.whiteColor
-                          : isDark
-                          ? AppColors.darkInactiveButtonColor
-                          : AppColors.primaryColor,
+                  color: (!isFirstButton)
+                      ? isDark
+                            ? AppColors.darkInactiveButtonColor
+                            : AppColors.whiteColor
+                      : isDark
+                      ? AppColors.darkInactiveButtonColor
+                      : AppColors.primaryColor,
                   borderRadius: BorderRadius.circular(borderRadius ?? 4),
                   border: Border.all(
-                    color:
-                        isDark
-                            ? AppColors.darkInactiveButtonColor
-                            : AppColors.primaryColor,
+                    color: isDark
+                        ? AppColors.darkInactiveButtonColor
+                        : AppColors.primaryColor,
                   ),
                 ),
                 constraints: const BoxConstraints(minWidth: 60, minHeight: 48),
                 child: CustomLoader(
                   loadingShape: LoadingShape.fadingCircle,
-                  color:
-                      (!isFirstButton)
-                          ? AppColors.primaryColor
-                          : AppColors.whiteColor,
+                  color: (!isFirstButton)
+                      ? AppColors.primaryColor
+                      : AppColors.whiteColor,
                   size: 40,
                 ),
               );
@@ -343,34 +342,32 @@ class PButton<C extends Cubit<S>, S> extends StatelessWidget {
           borderRadiusGeometry: borderRadiusGeometry,
           onPressed:
               ((state is ButtonDisabledState && isFirstButton) ||
-                      state is ButtonLoadingState)
-                  ? null
-                  : onPressed,
+                  state is ButtonLoadingState)
+              ? null
+              : onPressed,
           dropDown: dropDown,
           elevation: elevation,
           mainAxisSize: mainAxisSize,
-          borderColor:
-              (state is ButtonDisabledState && isFirstButton)
-                  ? isDark
-                      ? AppColors.darkInactiveButtonColor
-                      : AppColors.inactiveButtonColor
-                  : (state is ButtonLoadingState &&
-                      (isFirstButton != state.isFirstButtonLoading))
-                  ? isDark
-                      ? AppColors.darkInactiveButtonColor
-                      : AppColors.inactiveButtonColor
-                  : borderColor,
-          fillColor:
-              (state is ButtonDisabledState && isFirstButton)
-                  ? isDark
-                      ? AppColors.darkInactiveButtonColor
-                      : AppColors.inactiveButtonColor
-                  : (state is ButtonLoadingState &&
-                      (isFirstButton != state.isFirstButtonLoading))
-                  ? isDark
-                      ? AppColors.darkInactiveButtonColor
-                      : AppColors.inactiveButtonColor
-                  : fillColor,
+          borderColor: (state is ButtonDisabledState && isFirstButton)
+              ? isDark
+                    ? AppColors.darkInactiveButtonColor
+                    : AppColors.inactiveButtonColor
+              : (state is ButtonLoadingState &&
+                    (isFirstButton != state.isFirstButtonLoading))
+              ? isDark
+                    ? AppColors.darkInactiveButtonColor
+                    : AppColors.inactiveButtonColor
+              : borderColor,
+          fillColor: (state is ButtonDisabledState && isFirstButton)
+              ? isDark
+                    ? AppColors.darkInactiveButtonColor
+                    : AppColors.inactiveButtonColor
+              : (state is ButtonLoadingState &&
+                    (isFirstButton != state.isFirstButtonLoading))
+              ? isDark
+                    ? AppColors.darkInactiveButtonColor
+                    : AppColors.inactiveButtonColor
+              : fillColor,
           icon: icon,
           isFitWidth: isFitWidth,
           padding: padding,
