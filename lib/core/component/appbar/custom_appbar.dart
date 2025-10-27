@@ -18,6 +18,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onBackPressed;
   final bool isCenterTitle;
   final List<Widget>? actions;
+  final bool? hasSubtitle;
+  final String? subtitle;
 
   const CustomAppBar({
     super.key,
@@ -28,6 +30,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.filterIconBottomSheetWidget,
     this.actions,
     this.bottomSheetWidgetFormButtonAction,
+    this.hasSubtitle = false,
+    this.subtitle,
   });
 
   @override
@@ -62,13 +66,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: showBackButton
           ? IconButton(
-              icon: PImage(
-                source: AppLocalization.isArabic
-                    ? AppSvgIcons.backRight
-                    : AppSvgIcons.backLeft,
-                height: 30,
-                width: 30,
-                fit: BoxFit.fill,
+              icon: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: PImage(
+                  source: AppLocalization.isArabic
+                      ? AppSvgIcons.backRight
+                      : AppSvgIcons.backLeft,
+                  color: AppColors.black,
+                  height: 30,
+                  width: 30,
+                  fit: BoxFit.fill,
+                ),
               ),
               onPressed: () {
                 if (onBackPressed != null) {
@@ -80,11 +88,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           : null,
       actions: finalActions,
-      title: PText(
-        title: title.tr(context: context),
-        fontColor: AppColors.black,
-        fontWeight: FontWeight.w500,
-        size: PSize.text18,
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          PText(
+            title: title.tr(context: context),
+            fontColor: AppColors.black,
+            fontWeight: FontWeight.w500,
+            size: PSize.text18,
+          ),
+          if (hasSubtitle == true)
+            PText(
+              title: subtitle!.tr(context: context),
+              fontColor: AppColors.grayColor500,
+              fontWeight: FontWeight.w500,
+              size: PSize.text14,
+            ),
+        ],
       ),
       centerTitle: isCenterTitle,
       titleSpacing: isCenterTitle ? null : 0,

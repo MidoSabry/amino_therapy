@@ -2,6 +2,7 @@ import 'package:amino_therapy/core/services/flavorizer/flavors_managment.dart';
 import 'package:amino_therapy/core/services/log/app_log.dart';
 import 'package:amino_therapy/features/cart/presentation/screens/cart_screen.dart';
 import 'package:amino_therapy/features/home/presentation/screen/home_screen.dart';
+import 'package:amino_therapy/features/products/presentation/screens/all_products_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -55,11 +56,11 @@ class RouterManager {
         path: AppRouter.splash,
         builder: (context, state) => const SplashScreen(),
       ),
-      //  GoRoute(
-      //   name: AppRouter.home,
-      //   path: AppRouter.home,
-      //   builder: (context, state) => const HomeScreen(),
-      // ),
+       GoRoute(
+        name: AppRouter.allProducts,
+        path: AppRouter.allProducts,
+        builder: (context, state) => const AllProductsScreen(),
+      ),
       // GoRoute(
       //   name: AppRouter.onBoarding,
       //   path: AppRouter.onBoarding,
