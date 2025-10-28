@@ -8,7 +8,7 @@ import '../../../../core/data/constants/app_colors.dart';
 import '../../../../core/global/state/base_state.dart';
 import '../../../home/data/model/products.dart';
 import '../bloc/allproducts_cubit.dart';
-import '../widgets/search_widget.dart';
+import '../widgets/search_products_widget.dart';
 
 class AllProductsScreen extends StatelessWidget {
   const AllProductsScreen({super.key});

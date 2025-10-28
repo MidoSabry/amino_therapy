@@ -1,8 +1,10 @@
 import 'package:amino_therapy/core/component/text/p_text.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/data/constants/app_colors.dart';
+import '../../../../core/data/constants/app_router.dart';
 import '../../../../core/global/enums/global_enum.dart';
 
 class FeaturesWidget extends StatelessWidget {
@@ -47,11 +49,14 @@ class FeaturesWidget extends StatelessWidget {
               fontColor: AppColors.black,
               fontWeight: FontWeight.w700,
             ),
-            PText(
-              title: "View All",
-              fontColor: AppColors.primaryColor,
-              size: PSize.text13,
-              fontWeight: FontWeight.w500,
+            GestureDetector(
+              child: PText(
+                title: "View All",
+                fontColor: AppColors.primaryColor,
+                size: PSize.text13,
+                fontWeight: FontWeight.w500,
+              ),
+              onTap: () => context.pushNamed(AppRouter.allServices),
             ),
           ],
         ),
