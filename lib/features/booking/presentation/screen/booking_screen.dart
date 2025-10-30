@@ -5,6 +5,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../../../core/data/constants/app_colors.dart';
 import '../../../../core/global/enums/global_enum.dart';
+import 'appointment_booked_sscreen.dart';
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
@@ -123,8 +124,24 @@ class _BookingScreenState extends State<BookingScreen> {
                       onPressed: isNextEnabled
                           ? () {
                               if (currentStep == 3) {
-                                print("Confirm Booking");
-                                // here you can call API or navigate later
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) =>
+                                        const AppointmentBookedScreen(),
+                                  ),
+                                ).then((value) {
+                                  if (value == true) {
+                                    // After it pops (after 5 sec), reset back to step 0
+                                    setState(() {
+                                      currentStep = 0;
+                                      selectedDate = null;
+                                      selectedTime = null;
+                                      selectedServices.clear();
+                                      selectedProducts.clear();
+                                    });
+                                  }
+                                });
                               } else if (currentStep == 2) {
                                 setState(() => currentStep = 3);
                               } else {
