@@ -1,0 +1,13 @@
+# flutter pub run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  android_flavor: prod
+  iOS_flavor: prod
+  image_path_android: "assets/images/app_icon/app_icon_ios_prod.png"
+  image_path_ios: "assets/images/app_icon/app_icon_ios_prod.png"
+
+  # image_path_android: "assets/icon/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
