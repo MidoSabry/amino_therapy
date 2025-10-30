@@ -84,7 +84,7 @@ class AllProductsScreen extends StatelessWidget {
                           final filtered = state.data!;
                           return GridView.count(
                             crossAxisCount: 2,
-                            childAspectRatio: 0.77,
+                            childAspectRatio: 0.080.h,
                             padding: const EdgeInsets.all(8),
                             children: filtered
                                 .map((p) => ProductCard(product: p))

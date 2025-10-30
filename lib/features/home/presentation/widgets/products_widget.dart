@@ -50,7 +50,7 @@ class ProductsWidget extends StatelessWidget {
         SizedBox(height: 2.h),
         GridView.count(
           crossAxisCount: 2,
-          childAspectRatio: 0.78,
+          childAspectRatio: 0.083.h,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           children: products.map((p) => ProductCard(product: p)).toList(),
@@ -59,4 +59,3 @@ class ProductsWidget extends StatelessWidget {
     );
   }
 }
-
